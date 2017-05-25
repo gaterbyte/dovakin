@@ -8,7 +8,7 @@ echo "  / __ |/  _ \  \/ /\__  \ |  |/ /  |/    \  airmon-ng"
 echo " / /_/ (  <_> )   /  / __ \|    <|  |   |  \ "
 echo " \____ |\____/ \_/  (____  /__|_ \__|___|  / "
 echo "      \/                 \/     \/       \/ "
-echo " $(tput setaf 1) To make this script executable use chmod +x dovakin1.0.sh $(tput sgr0)"
+echo " $(tput setaf 1) To make this script executable use chmod +x dovakin1.5.sh $(tput sgr0)"
 echo ""
 
 
