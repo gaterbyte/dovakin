@@ -3,12 +3,12 @@
 
  
 echo "     .___                   __   .__  "      
-echo "   __| _/_______  _______  |  | _|__|  ___ Ver 1.2" 
-echo "  / __ |/  _ \  \/ /\__  \ |  |/ /  |/    \  airmon-zc"
+echo "   __| _/_______  _______  |  | _|__|  ___ Ver 1.5" 
+echo "  / __ |/  _ \  \/ /\__  \ |  |/ /  |/    \  airmon-ng"
 echo " / /_/ (  <_> )   /  / __ \|    <|  |   |  \ "
 echo " \____ |\____/ \_/  (____  /__|_ \__|___|  / "
 echo "      \/                 \/     \/       \/ "
-echo " $(tput setaf 1) To make this script executable use chmod +x dovakin1.2.sh $(tput sgr0)"
+echo " $(tput setaf 1) To make this script executable use chmod +x dovakin1.0.sh $(tput sgr0)"
 echo ""
 
 
@@ -24,7 +24,8 @@ echo "  [5]   start armitage"
 echo "  [6]   kill wifi card"
 echo "  [7]   update kali"
 echo "  [8]   airodump-ng"
-echo "  [9]   install ethtool" 
+echo "  [9]   airodump-ng with date logging"
+echo "  [10]  install ethtool" 
 
 read -p "Enter Number " answer
     case $answer in
@@ -33,17 +34,17 @@ read -p "Enter Number " answer
 	ifconfig wlan0 down
 	macchanger -r wlan0
 	ifconfig wlan0 up
-	airmon-zc start wlan0;;
+	airmon-ng start wlan0;;
        2) echo "wlan1 monitor mode" 
         ifconfig wlan1 down
         macchanger -r wlan1
         ifconfig wlan1 up
-	airmon-zc start wlan1;;
+	airmon-ng start wlan1;;
        3) echo "wlan2 monitor mode" 
         ifconfig wlan2 down
         macchanger -r wlan2
         ifconfig wlan2 up
-	airmon-zc start wlan2;;
+	airmon-ng start wlan2;;
        4) echo "start metasploit services"
 	service postgresql start && service metasploit start;;
        5) echo "start armitage"
@@ -59,8 +60,10 @@ read -p "Enter Number " answer
 	7) echo "update kali"
 	apt-get update && apt-get upgrade -y;;
 	8) echo "airodump-ng"
-	airodump-ng wlan0mon;;
-	9) echo "install ethtool"
+	airodump-ng wlan1mon;;
+	9) echo "airodump-ng with date logging"
+	airodump-ng wlan1mon -w "$(date +"%Y_%m_%d_%I_%M_%p")dump" ;;
+	10) echo "install ethtool"
 	apt-get install ethtool;;
        *) break ;;
    esac 
@@ -68,3 +71,4 @@ read -p "Enter Number " answer
    read key
 done
 exit 0
+
